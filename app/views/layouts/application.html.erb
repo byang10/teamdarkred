@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Flash Cards </title>
+    <title>flash cards</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="main_cards.css">
+    
 </head>
 
 <body>
@@ -19,28 +19,46 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Welcome to Flash for jobs</a>
+                <% if user_signed_in? %>
+         <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>     
+        <% else %>
+          <%= link_to "Sign Up", new_user_registration_path, { :class=>"navbar-brand" } %>
+          <%= link_to "Sign In", new_user_session_path, { :class=>"navbar-brand" }%>
+        <% end %>
+                
             </div>
 
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#">Link</a></li>
+                    <li><% if user_signed_in? %>
+          <%= link_to "New Post", new_post_path %>
+        <% else %>
+          <%= link_to "Sign Up", new_user_registration_path, { :class=>"navbar-brand" } %>
+          <%= link_to "Sign In", new_user_session_path, { :class=>"navbar-brand" }%>
+        <% end %></li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="#">Create Cards</a></li>
-                            <li><a href="#">View existing cards</a></li>
-                            <li><a href="#">Create new job</a></li>
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
                             <li role="separator" class="divider"></li>
-                            <li><a href="#">Sign Out</a></li>
+                            <li><a href="#">Separated link</a></li>
                         </ul>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
+    
+    <% if notice %>
+        <p class="alert alert-success"><%= notice %></p>
+    <% end %>
+    <% if alert %>
+        <p class="alert alert-danger"><%= alert %></p>
+    <% end %>
 
       <%= yield %>
 
