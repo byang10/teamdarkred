@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>flash cards</title>
+    <title>Flash cards</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -9,8 +9,7 @@
 </head>
 
 <body>
-
-    <nav class="navbar navbar-default">
+        <nav class="navbar navbar-default">
         <div class="container-fluid">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -19,33 +18,36 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <% if user_signed_in? %>
-         <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>     
-        <% else %>
-          <%= link_to "Sign Up", new_user_registration_path, { :class=>"navbar-brand" } %>
-          <%= link_to "Sign In", new_user_session_path, { :class=>"navbar-brand" }%>
+             <% if user_signed_in? %>
+        <%= link_to "Red Team Flash Cards", new_user_registration_path, { :class=>"navbar-brand" } %>    
+            <% else %>
+          <%= link_to "Red Team Flash Cards", new_user_registration_path, { :class=>"navbar-brand" } %>
         <% end %>
                 
             </div>
 
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-
-                <ul class="nav navbar-nav navbar-right">
-                    <li><% if user_signed_in? %>
-          <%= link_to "New Post", new_post_path %>
-        <% else %>
-          <%= link_to "Sign Up", new_user_registration_path, { :class=>"navbar-brand" } %>
-          <%= link_to "Sign In", new_user_session_path, { :class=>"navbar-brand" }%>
-        <% end %></li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Action</a></li>
-                            <li><a href="#">Another action</a></li>
-                            <li><a href="#">Something else here</a></li>
+            <ul class="nav navbar-nav navbar-right">
+                <li><% if user_signed_in? %>
+                  <%= link_to "New Post", new_post_path %>
+                <% else %>
+                  <%= link_to "Sign Up", new_user_registration_path, { :class=>"navbar-brand" } %>
+                  <%= link_to "Sign In", new_user_session_path, { :class=>"navbar-brand" }%>
+                <% end %></li>
+        
+         <div id="View Cards">
+             <a class="btn btn-large btn-info" href="/categories">View Cards</a>
+        </div> 
+        
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#">Your Categories</a></li>
+                            <li><a href="#">Your Cards</a></li>
                             <li role="separator" class="divider"></li>
-                            <li><a href="#">Separated link</a></li>
+                            <li><a href="#">Sign out</a></li>
                         </ul>
                     </li>
                 </ul>
