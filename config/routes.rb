@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'cards/viewanswer'
+
+  get 'cards/viewanswe'
+
+  get 'cards/index'
+
   resources :categories do
     resources :cards
   end
@@ -11,5 +17,7 @@ Rails.application.routes.draw do
   post 'logout' => 'sessions#destroy'
   get 'auth/failure' => 'sessions#failure'
   get 'auth/twitter', :as => 'login'
+  
+  resources :contacts
   
 end
